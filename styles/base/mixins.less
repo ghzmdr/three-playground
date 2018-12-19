@@ -1,0 +1,22 @@
+// https://css-tricks.com/aspect-ratio-boxes/#article-header-id-6
+.aspect-ratio(@width, @height) {
+  width: @width;
+  &:before {
+    content: '';
+    height: 0;
+    width: 100%;
+    display: block;
+    padding-bottom: @height / @width * 100%;
+  }
+}
+
+// https://css-tricks.com/centering-in-the-unknown/
+.v-align() {
+  &:before {
+    content: '';
+    font-size: 0;
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+}

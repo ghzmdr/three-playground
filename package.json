@@ -1,0 +1,93 @@
+{
+  "name": "three-puncher",
+  "version": "0.1.0",
+  "description": "A WebGL clone",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ghzmdr/three-puncher.git"
+  },
+  "scripts": {
+    "clean": "gulp clean",
+    "dev": "gulp dev",
+    "test": "set -ex && jest && bundlesize",
+    "build": "gulp build",
+    "build:production": "gulp build --production",
+    "build:styles": "gulp styles",
+    "build:scripts": "gulp webpack && gulp webpack-standalone",
+    "build:views": "gulp views",
+    "release": "yarn build:production && gulp zip-release",
+    "deploy": "yarn build:production && surge ./build/public --domain three-puncher.surge.sh"
+  },
+  "license": "MIT",
+  "browserslist": [
+    "last 3 major versions",
+    "Safari >= 9",
+    "iOS >= 9",
+    "Android >= 6.0",
+    "Opera > 30",
+    "Edge >= 12",
+    "Explorer 11"
+  ],
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "scripts/**/*.{js}",
+      "!**/node_modules/**"
+    ],
+    "roots": [
+      "scripts/"
+    ]
+  },
+  "bundlesize": [
+    {
+      "path": "./build/public/js/app-*.js",
+      "maxSize": "100 kB"
+    },
+    {
+      "path": "./build/public/css/app-*.css",
+      "maxSize": "30 kB"
+    }
+  ],
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.2.1",
+    "@babel/plugin-proposal-decorators": "^7.2.2",
+    "@babel/preset-env": "^7.0.0",
+    "autoprefixer": "^9.1.5",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.4",
+    "browser-sync": "^2.26.0",
+    "browserslist": "^4.3.4",
+    "bundlesize": "0.15.x",
+    "del": "^3.0.0",
+    "gulp": "^4.0.0",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-if": "^2.0.2",
+    "gulp-less": "^4.0.1",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-nunjucks": "^4.0.0",
+    "gulp-plumber": "^1.2.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-rev": "^8.1.1",
+    "gulp-rev-delete-original": "^0.2.3",
+    "gulp-rev-rewrite": "^1.1.1",
+    "gulp-size": "^3.0.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-zip": "^4.2.0",
+    "jest": "^23.6.0",
+    "lazypipe": "^1.0.1",
+    "lazysizes": "^4.1.4",
+    "node-notifier": "^5.2.1",
+    "surge": "^0.20.1",
+    "url": "^0.11.0",
+    "webpack": "^4.20.2",
+    "webpack-dev-middleware": "^3.4.0",
+    "webpack-hot-middleware": "^2.24.3",
+    "yargs": "^12.0.2"
+  }
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>{{ pageTitle }}</title>
+    <meta name="description" content="{{ metaDescription }}" />
+    {% block meta %}{% endblock %}
+
+    <!-- This could be needed in some layouts
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+    -->
+    <!-- mobile meta (hooray!) -->
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link rel="preload" as="style" href="/{{ revisions['css/main.css'] or 'css/main.css' }}" />
+    <link rel="preload" as="script" href="/{{ revisions['js/main.js'] or 'js/main.js' }}" />
+
+    <link rel="stylesheet" href="/{{ revisions['css/main.css'] or 'css/main.css' }}" />
+
+    {% block head %}
+    {% endblock %}
+
+</head>
+<body class="{{ bodyClass if bodyClass | safe }}">
+
+    {% block main %}
+    {% endblock %}
+
+    <script defer src="/{{ revisions['js/main.js'] or 'js/main.js' }}"></script>
+</body>
+</html>

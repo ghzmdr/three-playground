@@ -1,0 +1,19 @@
+.lazyload,
+.lazyloading {
+  opacity: 0;
+
+  &.blurried {
+    opacity: 1;
+    filter: blur(5px);
+  }
+}
+
+.lazyloaded {
+  opacity: 1;
+  transition: opacity 300ms;
+
+  &.blurried {
+    transition: filter 0.4s;
+    filter: blur(0);
+  }
+}
