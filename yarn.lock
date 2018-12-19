@@ -566,6 +566,16 @@
     normalize-path "^2.0.1"
     through2 "^2.0.3"
 
+"@okiba/arrays@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@okiba/arrays/-/arrays-0.0.5.tgz#f8651e464af15185cc28cbc0ba9ac48ec5f1aeda"
+
+"@okiba/dom@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@okiba/dom/-/dom-0.0.6.tgz#4c3ca3da57de59a10b107fd9acd8981b781153a4"
+  dependencies:
+    "@okiba/arrays" "^0.0.5"
+
 "@webassemblyjs/ast@1.7.11":
   version "1.7.11"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.7.11.tgz#b988582cafbb2b095e8b556526f30c90d057cace"
@@ -7077,6 +7087,10 @@ tfunk@^3.0.1:
   dependencies:
     chalk "^1.1.1"
     object-path "^0.9.0"
+
+three@^0.99.0:
+  version "0.99.0"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.99.0.tgz#65711fda7a16501da83948121437d824df1fea19"
 
 throat@^4.0.0:
   version "4.1.0"

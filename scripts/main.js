@@ -1,8 +1,9 @@
-import Apple from '~/components/apple'
+import {qs} from '@okiba/dom'
+import Stage from '~/components/stage'
 
-const apple = new Apple('blue')
-console.log(apple)
+const canvas = qs('#stage')
+const stage = new Stage(canvas)
 
-const worker = new Worker('/js/standalone/ping-worker.js')
-worker.postMessage('ping')
-worker.addEventListener('message', ({data}) => console.log(data))
+window.application = {
+  stage
+}
