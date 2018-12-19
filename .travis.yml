@@ -1,3 +1,5 @@
 language: node_js
 cache: yarn
 script: yarn deploy
+node_js:
+  - "lts"
