@@ -50,7 +50,9 @@
   ],
   "dependencies": {
     "@okiba/dom": "^0.0.6",
-    "three": "^0.99.0"
+    "three": "^0.99.0",
+    "three-orbitcontrols": "^2.99.1",
+    "three-svg-loader": "^0.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

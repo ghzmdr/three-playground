@@ -1,5 +1,11 @@
 
-import {BoxBufferGeometry, MeshStandardMaterial, Mesh, TextureLoader} from 'three'
+import {
+  BoxBufferGeometry,
+  MeshStandardMaterial,
+  Mesh,
+} from 'three'
+
+import loadTextures from '~/utils/load-textures'
 
 export default class Cube {
   #mesh
@@ -8,15 +14,11 @@ export default class Cube {
   constructor(size, textures) {
     this.size = size
     if (textures) {
-      Object.entries(textures)
-        .forEach(([key, path]) => {
-          this.#textures[key] = new TextureLoader().load(path)
-          this.#textures[key].anisotropy = 16
-        })
+      this.#textures = loadTextures(textures)
     }
   }
 
-  get mesh() {
+  get el() {
     if (!this.#mesh) {
       this.#mesh = new Mesh(
         new BoxBufferGeometry(this.size, this.size, this.size),
@@ -30,8 +32,8 @@ export default class Cube {
   }
 
   update() {
-    this.mesh.rotation.x += 0.01
-    this.mesh.rotation.y += 0.01
-    this.mesh.rotation.z += 0.01
+    // this.mesh.rotation.x += 0.01
+    // this.mesh.rotation.y += 0.01
+    // this.mesh.rotation.z += 0.01
   }
 }
