@@ -1,19 +1,28 @@
 
-import {BoxBufferGeometry, MeshStandardMaterial, Mesh} from 'three'
+import {BoxBufferGeometry, MeshStandardMaterial, Mesh, TextureLoader} from 'three'
 
 export default class Cube {
   #mesh
+  #textures = {}
 
-  constructor(size, color) {
+  constructor(size, textures) {
     this.size = size
-    this.color = color
+    if (textures) {
+      Object.entries(textures)
+        .forEach(([key, path]) => {
+          this.#textures[key] = new TextureLoader().load(path)
+          this.#textures[key].anisotropy = 16
+        })
+    }
   }
 
   get mesh() {
     if (!this.#mesh) {
       this.#mesh = new Mesh(
         new BoxBufferGeometry(this.size, this.size, this.size),
-        new MeshStandardMaterial({color: this.color})
+        new MeshStandardMaterial({
+          ...this.#textures
+        })
       )
     }
 

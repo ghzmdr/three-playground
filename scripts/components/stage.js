@@ -5,16 +5,19 @@ export default class Stage {
   #renderer
   #scene = new Scene()
   #camera = new PerspectiveCamera(35, 1, 0.1, 100)
-  #light = new DirectionalLight(0xffffff, 5.0)
+  #light = new DirectionalLight(0xffffff, 1.0)
 
-  #elements = [new Cube(2, 0x800080)]
+  #elements = [new Cube(2, {
+    map: '/assets/images/emoji.png',
+    normalMap: '/assets/images/normal_map.png'
+  })]
 
   constructor(canvas) {
     this.#renderer = new WebGLRenderer({canvas, antialias: true})
     this.#renderer.setPixelRatio(window.devicePixelRatio)
+    this.#renderer.setAnimationLoop(this.#loop)
 
     this.#camera.position.set(0, 0, 10)
-    this.#setSize()
 
     this.#elements.forEach(e => {
       this.#scene.add(e.mesh)
@@ -23,12 +26,11 @@ export default class Stage {
     this.#light.position.set(0, 3, 3)
     this.#scene.add(this.#light)
 
-    requestAnimationFrame(this.#loop)
+    this.#setSize()
     window.addEventListener('resize', this.#setSize)
   }
 
   #loop = _ => {
-    requestAnimationFrame(this.#loop)
     this.render()
     this.update()
   }
