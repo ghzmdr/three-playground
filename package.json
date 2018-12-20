@@ -1,10 +1,10 @@
 {
-  "name": "three-puncher",
+  "name": "three-playground",
   "version": "0.1.0",
   "description": "A WebGL clone",
   "repository": {
     "type": "git",
-    "url": "git@github.com:ghzmdr/three-puncher.git"
+    "url": "git@github.com:ghzmdr/three-playground.git"
   },
   "scripts": {
     "clean": "gulp clean",
@@ -16,7 +16,7 @@
     "build:scripts": "gulp webpack && gulp webpack-standalone",
     "build:views": "gulp views",
     "release": "yarn build:production && gulp zip-release",
-    "deploy": "yarn build:production && surge ./build/public --domain three-puncher.surge.sh"
+    "deploy": "yarn build:production && surge ./build/public --domain three-playground.surge.sh"
   },
   "license": "MIT",
   "browserslist": [

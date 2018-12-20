@@ -9,6 +9,11 @@ html, body, canvas {
   margin: 0;
   height: 100%;
   width: 100%;
+  font-family: sans-serif;
+}
+
+html {
+  background: skyblue;
 }
 
 canvas {
@@ -17,4 +22,38 @@ canvas {
   right: 0;
   bottom: 0;
   left: 0;
+}
+
+form {
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+  width: 300px;
+  height: 300px;
+}
+
+#stages, form button {
+   -webkit-appearance: button;
+   text-align: center;
+   -webkit-border-radius: 2px;
+   -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+   -webkit-padding-end: 20px;
+   -webkit-padding-start: 2px;
+   -webkit-user-select: none;
+   background-image: -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+   background-position: 97% center;
+   background-repeat: no-repeat;
+   border: 1px solid #AAA;
+   color: #555;
+   font-size: inherit;
+   margin-bottom: 30px;
+   overflow: hidden;
+   padding: 5px 10px;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   width: 100%;
 }
