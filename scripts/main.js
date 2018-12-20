@@ -1,5 +1,5 @@
 import {qs} from '@okiba/dom'
-import Stage from '~/components/stage'
+import Stage from '~/stages/stage-1'
 
 const canvas = qs('#stage')
 const stage = new Stage(canvas)
