@@ -1,15 +1,12 @@
 import {
   ShapeBufferGeometry,
-  MeshStandardMaterial,
+  MeshBasicMaterial,
   Mesh,
   DoubleSide,
-  Group,
-  Vector3
+  Group
 } from 'three'
 
 import SVGLoader from 'three-svg-loader'
-
-import loadTextures from '~/utils/load-textures'
 
 
 export default class SVGGeometry {
@@ -17,11 +14,7 @@ export default class SVGGeometry {
   #mesh
   #textures = {}
 
-  constructor(path, textures) {
-    if (textures) {
-      this.#textures = loadTextures(textures)
-    }
-
+  constructor(path) {
     new SVGLoader().load(path, this.#onSVGLoaded)
   }
 
@@ -30,12 +23,17 @@ export default class SVGGeometry {
   }
 
   #onSVGLoaded = paths => {
+    this.#group.scale.multiplyScalar(0.25)
+    this.#group.position.x = - 70
+    this.#group.position.y = 70
+    this.#group.position.z = -70
+    this.#group.scale.y *= -1
+
     paths.forEach(path => {
-      const material = new MeshStandardMaterial({
+      const material = new MeshBasicMaterial({
         side: DoubleSide,
-        // color: path.color,
-        // depthWrite: false
-        ...this.#textures
+        color: path.color,
+        depthWrite: false
       })
 
       path.toShapes(true)

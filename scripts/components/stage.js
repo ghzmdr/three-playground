@@ -12,35 +12,36 @@ import OrbitControls from 'three-orbitcontrols'
 import Cube from '~/shapes/cube'
 import SVGShape from '~/shapes/svg'
 
+import Stats from 'stats.js'
+
 window.THREE = THREE
 
 export default class Stage {
   #renderer
   #scene = new Scene()
-  #camera = new PerspectiveCamera(35, 1, 0.1, 100)
+  #camera = new PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 100)
   #frontLight = new DirectionalLight(0xffffff, 1.0)
   #backLight = new DirectionalLight(0xffffff, 1.0)
   #ambientLight = new AmbientLight(0xffffff, 0.3)
+  #stats = new Stats()
 
   #elements = [
     new Cube(2, {
       map: '/assets/images/emoji.png',
       normalMap: '/assets/images/normal_map.png'
     }),
-    new SVGShape('/assets/images/circle.svg', {
-      map: '/assets/images/emoji.png',
-      normalMap: '/assets/images/normal_map.png'
-    })
+    new SVGShape('/assets/images/tiger.svg')
   ]
 
   constructor(canvas) {
+    canvas.parentNode.appendChild(this.#stats.dom)
     this.#renderer = new WebGLRenderer({canvas, antialias: true})
     this.#renderer.setPixelRatio(window.devicePixelRatio)
     this.#renderer.setAnimationLoop(this.#loop)
 
     this.#scene.background = new Color(0x8FBCD4)
 
-    this.#camera.position.set(-4, 4, 10)
+    this.#camera.position.set(0, 0, 10)
     this.controls = new OrbitControls(this.#camera, this.#renderer.domElement)
 
     this.light()
@@ -74,6 +75,7 @@ export default class Stage {
     this.#elements.forEach(
       e => e.update()
     )
+    this.#stats.update()
   }
 
   render() {
