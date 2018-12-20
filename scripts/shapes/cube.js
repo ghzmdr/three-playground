@@ -8,27 +8,27 @@ import {
 import loadTextures from '~/utils/load-textures'
 
 export default class Cube {
-  #mesh
-  #textures = {}
+  _mesh
+  _textures = {}
 
   constructor(size, textures) {
     this.size = size
     if (textures) {
-      this.#textures = loadTextures(textures)
+      this._textures = loadTextures(textures)
     }
   }
 
   get el() {
-    if (!this.#mesh) {
-      this.#mesh = new Mesh(
+    if (!this._mesh) {
+      this._mesh = new Mesh(
         new BoxBufferGeometry(this.size, this.size, this.size),
         new MeshStandardMaterial({
-          ...this.#textures
+          ...this._textures
         })
       )
     }
 
-    return this.#mesh
+    return this._mesh
   }
 
   update() {

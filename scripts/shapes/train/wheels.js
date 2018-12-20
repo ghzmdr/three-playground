@@ -5,13 +5,13 @@ import {
 } from 'three'
 
 export default class Nose {
-  #geometry = new CylinderBufferGeometry(0.4, 0.4, 1.75, 16)
+  _geometry = new CylinderBufferGeometry(0.4, 0.4, 1.75, 16)
 
   constructor(material) {
-    this.#geometry.rotateX(Math.PI / 2)
+    this._geometry.rotateX(Math.PI / 2)
 
     this.el = new Group()
-    const wheel = new Mesh(this.#geometry, material)
+    const wheel = new Mesh(this._geometry, material)
     wheel.position.y = -0.5
 
     this.wheels = {

@@ -10,24 +10,24 @@ import SVGLoader from 'three-svg-loader'
 
 
 export default class SVGGeometry {
-  #group = new Group()
-  #mesh
-  #textures = {}
+  _group = new Group()
+  _mesh
+  _textures = {}
 
   constructor(path) {
-    new SVGLoader().load(path, this.#onSVGLoaded)
+    new SVGLoader().load(path, this._onSVGLoaded)
   }
 
   get el() {
-    return this.#group
+    return this._group
   }
 
-  #onSVGLoaded = paths => {
-    this.#group.scale.multiplyScalar(0.25)
-    this.#group.position.x = - 70
-    this.#group.position.y = 70
-    this.#group.position.z = -70
-    this.#group.scale.y *= -1
+  _onSVGLoaded = paths => {
+    this._group.scale.multiplyScalar(0.25)
+    this._group.position.x = - 70
+    this._group.position.y = 70
+    this._group.position.z = -70
+    this._group.scale.y *= -1
 
     paths.forEach(path => {
       const material = new MeshBasicMaterial({
@@ -40,7 +40,7 @@ export default class SVGGeometry {
         .forEach(shape => {
           const geometry = new ShapeBufferGeometry(shape)
           const mesh = new Mesh(geometry, material)
-          this.#group.add(mesh)
+          this._group.add(mesh)
         })
     })
   }

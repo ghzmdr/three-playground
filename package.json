@@ -52,6 +52,7 @@
     "@okiba/dom": "^0.0.6",
     "stats.js": "^0.17.0",
     "three": "^0.99.0",
+    "three-gltf-loader": "^1.99.1",
     "three-orbitcontrols": "^2.99.1",
     "three-svg-loader": "^0.1.0"
   },
